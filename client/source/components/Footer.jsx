@@ -21,7 +21,7 @@ export default class InlineEdit extends React.Component {
       listName:tempListName,
       budget: budget,
       list: list
-    } 
+    }
     let lists = retrieveLists()
     lists.push(tempListName)
     this.setState({savedLists: lists})
@@ -40,7 +40,7 @@ export default class InlineEdit extends React.Component {
     }
     this.setState({savedLists:lists})
     localStorage.setItem('lists', JSON.stringify(lists))
-    }               
+    }
   }
   render() {
       //these are declared to make the return statement a bit less cluttered.
@@ -52,11 +52,11 @@ export default class InlineEdit extends React.Component {
 
     return (
       <div className='footer'>
-        <Dropdown 
+        <Dropdown
         onChange= {handleListChange}
         options= {this.state.savedLists}
         value={listName}
-        placeholder="Your Lists" 
+        placeholder="Your Lists"
         />
 
         <input type="submit" value="Save" onClick={() => this.save(budget, list)}/>
@@ -66,5 +66,6 @@ export default class InlineEdit extends React.Component {
       </div>
     )
   }
-  
+
+
 }

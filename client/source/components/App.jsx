@@ -5,6 +5,9 @@ import List from './List.jsx'
 import InlineEdit from './InlineEdit.jsx'
 import AddItem from './AddItem.jsx'
 import Footer from './Footer.jsx'
+import Quagga from 'quagga'
+// import Quagga from 'quagga'
+import Scanner from '../scanner.js'
 
 export default class App extends React.Component {
 	constructor(props){
@@ -13,7 +16,8 @@ export default class App extends React.Component {
 	 		budget: 0,
 	 		list: [],
 	 		validInput: "disabled",
-	 		listName: ''
+	 		listName: '',
+			scannerOn: null
 	 	}
 	 	this.handleClear = this.handleClear.bind(this);
 	 	this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +28,7 @@ export default class App extends React.Component {
 		this.removeListItem = this.removeListItem.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this)
 		this.handleListChange = this.handleListChange.bind(this)
+		this.toggleScanner = this.toggleScanner.bind(this)
 	}
 
 	componentWillMount() {
@@ -82,7 +87,7 @@ export default class App extends React.Component {
 
 
   //
-  // functions to update the state. 
+  // functions to update the state.
   //
 
 	updateBudget(num) {
@@ -164,6 +169,21 @@ export default class App extends React.Component {
 	}
 
 
+	toggleScanner() {
+		if(!this.state.scannerOn) {
+			console.log('----------------on----------------')
+			Scanner();
+			this.setState({scannerOn: true})
+		}
+		if(this.state.scannerOn){
+			console.log('---------------off----------------')
+
+			Quagga.offDetected();
+			Quagga.offProcessed();
+			Quagga.stop();
+			this.setState({scannerOn: false})
+		}
+	}
 
 	render() {
 		return (
@@ -190,7 +210,11 @@ export default class App extends React.Component {
 					list={this.state.list}
 					listName={this.state.listName}
 					clear={this.handleClear}
+					example={'hello'}
+					toggleScanner={this.toggleScanner}
 				/>
+			<button onClick={this.toggleScanner}>scanner</button>
+			  <div id="interactive" className="viewport"></div>
 			</div>
 		)
 	}
