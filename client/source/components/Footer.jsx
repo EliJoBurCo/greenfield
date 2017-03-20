@@ -52,16 +52,31 @@ export default class InlineEdit extends React.Component {
 
     return (
       <div className='footer'>
-        <Dropdown 
+        <Dropdown
+        className="footer dropdown" 
         onChange= {handleListChange}
         options= {this.state.savedLists}
         value={listName}
         placeholder="Your Lists" 
         />
-
-        <input type="submit" value="Save" onClick={() => this.save(budget, list)}/>
-        <input type="submit" value="Clear all" onClick={() => clear()}/>
-        <input type="submit" value="Delete list" onClick={() => this.remove(listName)}/>
+        <input 
+        className ="footer save" 
+        type="submit" 
+        value="Save" 
+        onClick={() => this.save(budget, list)}
+        />
+        <input 
+        className ="footer clear" 
+        type="submit" 
+        value="Clear all" 
+        onClick={() => clear()}
+        />
+        <input 
+        className ="footer remove" 
+        type="submit" 
+        value="Delete list" 
+        onClick={() => this.remove(listName)}
+        />
 
       </div>
     )
