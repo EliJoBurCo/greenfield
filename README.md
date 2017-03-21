@@ -23,7 +23,11 @@ Stay within budget while shopping.
 
 ## Usage
 
-> TODO: add some usage instructions
+Tap the 'Add Item' button to add a blank 'item' line. Tap the trash can icon to delete any line. If there are multiple items in your list, you may drag and drop a list item to change the order simply by tapping and holding on the list item.
+
+Tapping any field on the line item (either 'Item' or '$0') will allow you to update the field with either a name or a price. Hitting enter or tapping away from the field finalizes the entry. When you add a price, you should see the 'TOTAL' field (top right) update with the new total price. Tapping again on either field in the item line allows you to update that field.
+
+Tap the 'BUDGET' field (top left) to enter a budget. The header color will now change as your TOTAL approaches and passes your BUDGET (blue -> yellow -> red). Changing BUDGET back to $0 turns this feature off.
 
 ## Requirements
 
