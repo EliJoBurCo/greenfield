@@ -9,16 +9,16 @@ Promise.promisifyAll(fs);
 describe('Static File Server', () => {
 
   it( 'should listen on port 8080 by default', (done) => {
-   request('http://127.0.0.1:8080', (err, resp)=> {
-      assert(resp.statusCode === 200);
+   request('http://127.0.0.1:8080', (err, {statusCode})=> {
+      assert(statusCode === 200);
       done();
     });
   });
 
   it( 'should listen on `process.env.PORT` if specified', (done) => {
     app.listen(4444, ()=> {
-      request('http://127.0.0.1:' + 4444, (err, resp)=> {
-        assert(resp.statusCode === 200);
+      request('http://127.0.0.1:' + 4444, (err, {statusCode})=> {
+        assert(statusCode === 200);
       });
       request('http://127.0.0.1:' + 4004, (err)=> {
         assert(err);
